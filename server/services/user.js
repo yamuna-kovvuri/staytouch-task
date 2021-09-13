@@ -9,7 +9,7 @@ const { createToken } = require('./auth');
 const bcrypt = require('bcrypt');
 
 const signIn = async (payload) => {
-  const { userName, password: hashedPassword } = payload;
+  const { userName, password } = payload;
 
   const transaction = await sequelize.transaction();
 
@@ -23,9 +23,9 @@ const signIn = async (payload) => {
     }
     const { dataValues } = user;
     const doc = Helper.convertSnakeToCamel(dataValues);
-    const { password } = doc;
+    const { password: hashedPassword } = doc;
 
-    const isValid = bcrypt.compare(hashedPassword, password);
+    const isValid = await bcrypt.compare(password, hashedPassword);
 
     if (!isValid) {
       return { errors: [ { name: 'user', message: 'Invalid Password' } ] };
