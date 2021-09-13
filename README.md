@@ -6,9 +6,13 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Features
 
+```
 Node.js with Express and Apollo Server
+```
 PostgreSQL Database with Sequelize ORM
+```
 JWT Authentication
+```
 
 ### Prerequisites
 
