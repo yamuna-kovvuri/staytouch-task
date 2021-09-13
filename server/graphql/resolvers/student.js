@@ -32,7 +32,7 @@ const getList = async (_, args, context) => {
       pageInfo: {
         totalRecords: count, pageLimit: limit,
       },
-      err,
+       errors: err,
     };
   } catch (error) {
     return error;
